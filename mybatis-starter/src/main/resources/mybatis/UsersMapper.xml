@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- @author zt on 2020-03-12 15:38:47 -->
+<mapper namespace="com.zt.frameworks.mybatis.dao.UsersMapper">
+    <resultMap type="com.zt.frameworks.mybatis.entity.Users" id="usersMap">
+        <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="age" property="age"/>
+            <result column="max_num" property="maxNum"/>
+    </resultMap>
+    <!-- //@NotReplaceableStart -->
+    <!-- 重新生成代码时，NotReplaceableStart -> NotReplaceableEnd 中间的内容不会被覆盖 -->
+
+        <resultMap id="" type="">
+
+        </resultMap>
+    <!-- //@NotReplaceableEnd  -->
+</mapper>
