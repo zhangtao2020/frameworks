@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mybatis-starter</artifactId>
-    <version>1.0.0</version>
+    <version>${parent.version}-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>mybatis-starter</name>
     <url></url>
