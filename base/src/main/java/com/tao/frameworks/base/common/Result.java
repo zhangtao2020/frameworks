@@ -26,6 +26,8 @@ public class Result {
 	 */
 	private Object data;
 
+	private Long time;
+
 	public Result(ErrorCode errorCode){
 		this(errorCode.getCode(), errorCode.getMessage(), null);
 	}
@@ -79,4 +81,12 @@ public class Result {
 		this.data = data;
 	}
 
+	public Long getTime() {
+		time = System.currentTimeMillis();
+		return time;
+	}
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
 }
