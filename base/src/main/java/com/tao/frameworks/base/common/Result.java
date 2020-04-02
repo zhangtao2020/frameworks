@@ -22,11 +22,15 @@ public class Result {
 	private String message;
 
 	/**
+	 * 时间
+	 */
+	private Long time;
+
+	/**
 	 * 数据
 	 */
 	private Object data;
 
-	private Long time;
 
 	public Result(ErrorCode errorCode){
 		this(errorCode.getCode(), errorCode.getMessage(), null);
@@ -82,7 +86,7 @@ public class Result {
 	}
 
 	public Long getTime() {
-		time = System.currentTimeMillis();
+		time = System.currentTimeMillis() / 1000;
 		return time;
 	}
 
