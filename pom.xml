@@ -11,6 +11,7 @@
     <modules>
         <module>base</module>
         <module>mybatis-starter</module>
+        <module>admin-starter</module>
     </modules>
 
     <properties>

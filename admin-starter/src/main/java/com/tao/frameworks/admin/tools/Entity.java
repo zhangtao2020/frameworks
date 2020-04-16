@@ -1,4 +1,4 @@
-package com.tao.frameworks.mybatis.tools;
+package com.tao.frameworks.admin.tools;
 
 import java.util.ArrayList;
 import java.util.List;
