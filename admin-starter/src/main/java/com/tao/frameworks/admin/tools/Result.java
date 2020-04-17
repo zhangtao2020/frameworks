@@ -26,7 +26,7 @@ public class Result {
 	/**
 	 * 总数
 	 */
-	private int count;
+	private int count = 0;
 
 	/**
 	 * 数据
@@ -39,9 +39,6 @@ public class Result {
 	}
 
 	public Result(Integer code, String message, int count, Object data) {
-		if (code == null) {
-			code = -1;
-		}
 		this.code = code;
 		this.msg = message;
 		this.count = count;
@@ -57,7 +54,7 @@ public class Result {
 	}
 
 	public Result(){
-		this(null, null, 0, null);
+		this(0, "success", 0, null);
 	}
 
 	public Result(Object data){
