@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.tao.frameworks.admin.tools.Result;
 
 /**
 * @author ${entity.author} on ${entity.createTime}
@@ -43,7 +43,7 @@ public class ${entity.className}Controller {
     }
 
     @PostMapping(value = "/query", name = "分页查询")
-    public IPage<${entity.className}> query(int page, int limit, ${entity.className}Param params) {
+    public Result query(int page, int limit, ${entity.className}Param params) {
         return this.${entity.classInstanceName}Service.selectPage(page, limit, params);
     }
 

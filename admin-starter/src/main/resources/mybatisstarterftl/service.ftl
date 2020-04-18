@@ -5,9 +5,11 @@ import ${entity.daoPackageName}.${entity.className}Mapper;
 import ${entity.entityPackageName}.${entity.className};
 import ${entity.dtoPackageName}.${entity.className}Dto;
 import ${entity.paramPackage}.${entity.className}Param;
+import com.tao.frameworks.admin.tools.Result;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tao.frameworks.admin.tools.MapUtils;
@@ -85,14 +87,25 @@ public class ${entity.className}Service {
      * @param param
      * @return
      */
-    public IPage<${entity.className}> selectPage(int page, int limit, ${entity.className}Param param) {
+    public Result selectPage(int page, int limit, ${entity.className}Param param) {
         QueryWrapper<${entity.className}> queryWrapper = new QueryWrapper<>();
         Map<String, Object> columnMap = MapUtils.beanToMap(param);
         if(columnMap!=null) {
             columnMap.entrySet().forEach(entry -> queryWrapper.eq(entry.getKey(), entry.getValue()));
         }
         IPage<${entity.className}> p = new Page<>(page, limit);
-        return ${entity.classInstanceName}Mapper.selectPage(p, queryWrapper);
+        IPage<${entity.className}> ipage = ${entity.classInstanceName}Mapper.selectPage(p, queryWrapper);
+        List<${entity.className}> ${entity.classInstanceName}List = ipage.getRecords();
+        List<${entity.className}Dto> ${entity.classInstanceName}DtoList = ${entity.classInstanceName}List.stream().map(${entity.classInstanceName} -> {
+            ${entity.className}Dto ${entity.classInstanceName}Dto = new ${entity.className}Dto();
+            BeanUtils.copyProperties(${entity.classInstanceName}, ${entity.classInstanceName}Dto);
+            return ${entity.classInstanceName}Dto;
+        }).collect(Collectors.toList());
+        int total = (int)ipage.getTotal();
+        Result result = new Result();
+        result.setData(${entity.classInstanceName}DtoList);
+        result.setCount(total);
+        return result;
     }
 
 }
