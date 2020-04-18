@@ -72,6 +72,11 @@ public class CodeGenerator {
                 generate(config.servicePackage, "/src/main/java/", entity.className + "Service.java", "service.ftl", entity, false);
                 generate(config.daoPackage, "/src/main/java/", entity.className + "Mapper.java", "IMapperdao.ftl", entity, false);
                 generate("", "/src/main/resources/mybatis/" + SUB_PACKAGE + "/", entity.className + "Mapper.xml", "mapper.xml.ftl", entity, true);
+                /*------------------------------页面部分-------------------------------*/
+                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "list.html", "listPage.ftl", entity, true);
+                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "add.html", "addPage.ftl", entity, true);
+                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "edit.html", "editPage.ftl", entity, true);
+
             }
         } catch (Throwable e) {
             e.printStackTrace();
