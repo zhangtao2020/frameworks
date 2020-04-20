@@ -74,9 +74,15 @@ public class ${entity.className}Service {
      * @param param
      * @return
      */
-    public List<${entity.className}> selectByMap(${entity.className}Param param) {
+    public List<${entity.className}Dto> selectByMap(${entity.className}Param param) {
         Map<String, Object> columnMap = MapUtils.beanToMap(param);
-        return ${entity.classInstanceName}Mapper.selectByMap(columnMap);
+        List<${entity.className}> ${entity.classInstanceName}List = ${entity.classInstanceName}Mapper.selectByMap(columnMap);
+        List<${entity.className}Dto> ${entity.classInstanceName}DtoList = ${entity.classInstanceName}List.stream().map(${entity.classInstanceName} -> {
+            ${entity.className}Dto ${entity.classInstanceName}Dto = new ${entity.className}Dto();
+            BeanUtils.copyProperties(${entity.classInstanceName}, ${entity.classInstanceName}Dto);
+            return ${entity.classInstanceName}Dto;
+        }).collect(Collectors.toList());
+        return ${entity.classInstanceName}DtoList;
     }
 
     /**

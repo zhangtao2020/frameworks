@@ -61,4 +61,9 @@ public class Result {
 		this(0, "success", 0, data);
 	}
 
+	public static Result buildSuccess(Object data){
+		return new Result(0, "success", 0, data);
+	}
+
+
 }

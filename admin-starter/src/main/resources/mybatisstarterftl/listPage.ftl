@@ -95,7 +95,7 @@
         table.render({
             elem: '#LAY-user-back-manage'
             ,height: 500
-            ,url: '/admin/query'
+            ,url: '/${entity.classInstanceName}/query'
             ,method: 'post'
             ,page: true //开启分页
             ,cols: [[ //表头
@@ -161,7 +161,7 @@
                             var field = data.field; //获取提交的字段
                             $.ajax({
                                 type: "post",
-                                url: "/admin/insert",
+                                url: "/${entity.classInstanceName}/insert",
                                 data: field,
                                 dataType: "json",
                                 success: function(data){
@@ -194,7 +194,7 @@
                     e.del(), layer.close(t)
                     $.ajax({
                         type: "get",
-                        url: "/admin/delete?id="+data.id,
+                        url: "/${entity.classInstanceName}/delete?id="+data.id,
                         dataType: "json",
                         success: function(data){}
                     });
@@ -213,7 +213,7 @@
                         l.layui.form.on("submit(" + r + ")", function(t) {
                             $.ajax({
                                 type: "post",
-                                url: "/admin/update",
+                                url: "/${entity.classInstanceName}/update",
                                 data: t.field,
                                 dataType: "json",
                                 success: function(data){

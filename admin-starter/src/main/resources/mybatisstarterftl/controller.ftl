@@ -48,7 +48,7 @@ public class ${entity.className}Controller {
     }
 
     @PostMapping(value = "/select", name = "查询所有")
-    public List<${entity.className}> select(${entity.className}Param params) {
+    public List<${entity.className}Dto> select(${entity.className}Param params) {
         return this.${entity.classInstanceName}Service.selectByMap(params);
     }
 
