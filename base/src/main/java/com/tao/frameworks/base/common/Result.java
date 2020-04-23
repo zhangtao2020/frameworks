@@ -93,4 +93,9 @@ public class Result {
 	public void setTime(Long time) {
 		this.time = time;
 	}
+
+	public static Result buildSuccess(Object data) {
+		Result result = new Result(0, "success", data);
+		return result;
+	}
 }

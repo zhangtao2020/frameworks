@@ -5,14 +5,14 @@ import ${entity.daoPackageName}.${entity.className}Mapper;
 import ${entity.entityPackageName}.${entity.className};
 import ${entity.dtoPackageName}.${entity.className}Dto;
 import ${entity.paramPackage}.${entity.className}Param;
-import com.tao.frameworks.admin.tools.Result;
+import com.tao.frameworks.mybatis.tools.Result;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.tao.frameworks.admin.tools.MapUtils;
+import com.tao.frameworks.mybatis.tools.MapUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.BeanUtils;
 

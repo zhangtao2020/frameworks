@@ -1,6 +1,6 @@
-package com.tao.frameworks.admin.spring;
+package com.tao.frameworks.mybatis.spring;
 
-import com.tao.frameworks.admin.tools.Result;
+import com.tao.frameworks.mybatis.tools.Result;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.core.BridgeMethodResolver;
 import org.springframework.core.MethodParameter;

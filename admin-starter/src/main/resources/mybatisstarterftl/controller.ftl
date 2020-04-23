@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
-import com.tao.frameworks.admin.tools.Result;
+import com.tao.frameworks.mybatis.tools.Result;
 
 /**
 * @author ${entity.author} on ${entity.createTime}

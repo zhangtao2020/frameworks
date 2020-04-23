@@ -1,6 +1,6 @@
-package com.tao.frameworks.admin.tools;
+package com.tao.frameworks.mybatis.tools;
 
-import com.tao.frameworks.admin.exception.ErrorCode;
+import com.tao.frameworks.mybatis.exception.ErrorCode;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
