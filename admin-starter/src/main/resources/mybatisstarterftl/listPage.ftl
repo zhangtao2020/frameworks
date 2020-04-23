@@ -61,7 +61,7 @@
                 <button class="layui-btn layuiadmin-btn-admin" data-type="add">添加</button>
             </div>
 
-            <table id="LAY-user-back-manage" lay-filter="LAY-user-back-manage"></table>
+            <table id="LAY-table" lay-filter="LAY-table"></table>
             <script type="text/html" id="buttonTpl">
                 {{#  if(d.status == 1){ }}
                 <button class="layui-btn layui-btn-xs">已审核</button>
@@ -93,7 +93,7 @@
             ,table = layui.table;
 
         table.render({
-            elem: '#LAY-user-back-manage'
+            elem: '#LAY-table'
             ,height: 500
             ,url: '/${entity.classInstanceName}/query'
             ,method: 'post'
@@ -116,7 +116,7 @@
             var field = data.field;
 
             //执行重载
-            table.reload('LAY-user-back-manage', {
+            table.reload('LAY-table', {
                 where: field
             });
         });
@@ -124,7 +124,7 @@
         //事件
         var active = {
             batchdel: function(){
-                var checkStatus = table.checkStatus('LAY-user-back-manage')
+                var checkStatus = table.checkStatus('LAY-table')
                     ,checkData = checkStatus.data; //得到选中的数据
 
                 if(checkData.length === 0){
@@ -139,7 +139,7 @@
                       //,……
                     });
                     */
-                    table.reload('LAY-user-back-manage');
+                    table.reload('LAY-table');
                     layer.msg('已删除');
                 });
 
@@ -172,7 +172,7 @@
                                     }
                                 }
                             });
-                            table.reload('LAY-user-back-manage'); //数据刷新
+                            table.reload('LAY-table'); //数据刷新
                             layer.close(index); //关闭弹层
                         });
                         submit.trigger('click');
@@ -187,7 +187,7 @@
             active[type] ? active[type].call(this) : '';
         });
 
-        table.on("tool(LAY-user-back-manage)", function(e) {
+        table.on("tool(LAY-table)", function(e) {
             var data = e.data;
             if ("del" === e.event) {
                 layer.confirm("确定删除？", function(t) {
@@ -224,7 +224,7 @@
                                     }
                                 }
                             });
-                            table.reload('LAY-user-back-manage'), layer.close(e)
+                            table.reload('LAY-table'), layer.close(e)
                         }), n.trigger("click")
                     },
                     success: function(layero, index) {
