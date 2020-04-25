@@ -1,4 +1,4 @@
-package com.tao.frameworks.mybatis.tools;
+package com.tao.frameworks.admin.tools;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

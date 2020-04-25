@@ -1,4 +1,4 @@
-package com.tao.frameworks.mybatis.exception;
+package com.tao.frameworks.admin.exception;
 /**
  * 自定义异常
  *

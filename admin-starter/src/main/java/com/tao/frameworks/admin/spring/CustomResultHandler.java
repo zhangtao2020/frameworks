@@ -1,4 +1,4 @@
-package com.tao.frameworks.mybatis.spring;
+package com.tao.frameworks.admin.spring;
 
 import java.lang.annotation.*;
 

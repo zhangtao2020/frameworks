@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.tao.frameworks.mybatis.controller.BaseController
+  com.tao.frameworks.admin.controller.BaseController

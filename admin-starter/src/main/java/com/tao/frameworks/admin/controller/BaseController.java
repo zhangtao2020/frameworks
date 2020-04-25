@@ -1,9 +1,9 @@
-package com.tao.frameworks.mybatis.controller;
+package com.tao.frameworks.admin.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tao.frameworks.mybatis.exception.CustomException;
-import com.tao.frameworks.mybatis.exception.ErrorCode;
-import com.tao.frameworks.mybatis.tools.Result;
+import com.tao.frameworks.admin.exception.CustomException;
+import com.tao.frameworks.admin.exception.ErrorCode;
+import com.tao.frameworks.admin.tools.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

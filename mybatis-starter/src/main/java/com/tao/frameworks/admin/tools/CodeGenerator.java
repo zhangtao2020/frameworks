@@ -1,4 +1,4 @@
-package com.tao.frameworks.mybatis.tools;
+package com.tao.frameworks.admin.tools;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -22,7 +22,7 @@ public class CodeGenerator {
     public static String DB_PASSWORD = "root";
     public static String TOBE_GENERATE_TABLES = "";
     public static String AUTHOR = "zt";
-    private static Config config = new Config();
+    private static CodeGenerator.Config config = new CodeGenerator.Config();
     private static final Map<String, Class> defaultTypeMap = new HashMap<String, Class>(){
         {
             this.put("LONGTEXT", String.class);
@@ -72,11 +72,6 @@ public class CodeGenerator {
                 generate(config.servicePackage, "/src/main/java/", entity.className + "Service.java", "service.ftl", entity, false);
                 generate(config.daoPackage, "/src/main/java/", entity.className + "Mapper.java", "IMapperdao.ftl", entity, false);
                 generate("", "/src/main/resources/mybatis/" + SUB_PACKAGE + "/", entity.className + "Mapper.xml", "mapper.xml.ftl", entity, true);
-                /*------------------------------页面部分-------------------------------*/
-                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "list.html", "listPage.ftl", entity, true);
-                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "add.html", "addPage.ftl", entity, true);
-                generate("", "/src/main/resources/templates/" + SUB_PACKAGE + "/"+entity.classInstanceName, "edit.html", "editPage.ftl", entity, true);
-
             }
         } catch (Throwable e) {
             e.printStackTrace();
