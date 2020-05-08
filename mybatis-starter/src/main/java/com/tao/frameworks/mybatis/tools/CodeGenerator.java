@@ -1,4 +1,4 @@
-package com.tao.frameworks.admin.tools;
+package com.tao.frameworks.mybatis.tools;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
