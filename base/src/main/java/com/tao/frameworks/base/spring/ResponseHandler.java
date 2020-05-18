@@ -8,17 +8,19 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+/**
+ * @author tao
+ */
 @ControllerAdvice
-public class ResultHandler implements ResponseBodyAdvice {
+public class ResponseHandler implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
-        return false;
+        return true;
     }
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        System.out.println("-----------");
         if(body instanceof Result){
             return body;
         }

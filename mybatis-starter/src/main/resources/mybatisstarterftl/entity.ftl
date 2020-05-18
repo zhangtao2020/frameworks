@@ -43,5 +43,6 @@ private ${entity.idSimpleType} ${entity.idName};
     * ${prop.note}
     */
     private ${prop.simpleType} ${prop.propName};
+
 </#list>
 }
