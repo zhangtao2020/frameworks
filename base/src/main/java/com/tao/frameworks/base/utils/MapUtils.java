@@ -69,7 +69,8 @@ public class MapUtils {
                 try {
                     field.setAccessible(true);
                     Object value = field.get(cls);
-                    if (value != null && !value.equals("")) {
+                    if (value != null && !value.equals("")
+                            && (!field.getName().equals("page") && !field.getName().equals("limit"))) {
                         fieldMap.put(getName(field.getName()), value);
                     }
                 } catch (IllegalAccessException e) {
@@ -82,4 +83,5 @@ public class MapUtils {
         }
         return fieldMap;
     }
+
 }
