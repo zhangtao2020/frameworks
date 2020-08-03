@@ -2,6 +2,8 @@ package ${entity.paramPackage};
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import com.tao.frameworks.base.common.BaseParam;
+
 <#if entity.hasSetType>
     import java.util.Set;
 </#if>
@@ -17,14 +19,15 @@ import lombok.experimental.Accessors;
 */
 @Data
 @Accessors(chain = true)
-public class ${entity.className}Param {
+public class ${entity.className}Param extends BaseParam {
 
-/**
-* 主键
-*/
-private ${entity.idSimpleType} ${entity.idName};
+    /**
+    * 主键
+    */
+    private ${entity.idSimpleType} ${entity.idName};
 
 <#list entity.propList as prop>
+
     /**
     * ${prop.note}
     */

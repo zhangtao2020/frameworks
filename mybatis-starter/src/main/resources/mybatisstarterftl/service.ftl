@@ -94,13 +94,13 @@ public class ${entity.className}Service {
      * @param param
      * @return
      */
-    public Result selectPage(int page, int limit, ${entity.className}Param param) {
+    public Result selectPage(${entity.className}Param param) {
         QueryWrapper<${entity.className}> queryWrapper = new QueryWrapper<>();
         Map<String, Object> columnMap = MapUtils.beanToMap(param);
         if(columnMap!=null) {
             columnMap.entrySet().forEach(entry -> queryWrapper.eq(entry.getKey(), entry.getValue()));
         }
-        IPage<${entity.className}> p = new Page<>(page, limit);
+        IPage<${entity.className}> p = new Page<>(param.getPage(), param.getLimit());
         IPage<${entity.className}> ipage = ${entity.classInstanceName}Mapper.selectPage(p, queryWrapper);
         List<${entity.className}> ${entity.classInstanceName}List = ipage.getRecords();
         List<${entity.className}Dto> ${entity.classInstanceName}DtoList = ${entity.classInstanceName}List.stream().map(${entity.classInstanceName} -> {

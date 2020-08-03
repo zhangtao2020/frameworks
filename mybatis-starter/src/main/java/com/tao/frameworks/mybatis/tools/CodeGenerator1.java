@@ -1,5 +1,6 @@
 package com.tao.frameworks.mybatis.tools;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.commons.io.FileUtils;
@@ -12,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
-public class CodeGenerator2 {
+public class CodeGenerator1 {
 
     public static String PROJECT_ABSOLUTE_DIR = null;
     public static String BASE_PACKAGE = "com.tao.frameworks.mybatis";
@@ -22,7 +23,7 @@ public class CodeGenerator2 {
     public static String DB_PASSWORD = "root";
     public static String TOBE_GENERATE_TABLES = "";
     public static String AUTHOR = "zt";
-    private static CodeGenerator2.Config config = new CodeGenerator2.Config();
+    private static CodeGenerator1.Config config = new CodeGenerator1.Config();
     private static final Map<String, Class> defaultTypeMap = new HashMap<String, Class>(){
         {
             this.put("LONGTEXT", String.class);
@@ -45,7 +46,27 @@ public class CodeGenerator2 {
         }
     };
 
+    /**
+     * <p>
+     * 读取控制台内容
+     * </p>
+     */
+    public static String scanner() {
+        Scanner scanner = new Scanner(System.in);
+        StringBuilder help = new StringBuilder();
+        help.append("请输入表名：");
+        System.out.println(help.toString());
+        if (scanner.hasNext()) {
+            String ipt = scanner.next();
+            if (StringUtils.isNotEmpty(ipt)) {
+                return ipt;
+            }
+        }
+        throw new RuntimeException("请输入正确的表名！");
+    }
+
     public static void main(String[] args) {
+        TOBE_GENERATE_TABLES = scanner();
         config.subPackage = SUB_PACKAGE != null && SUB_PACKAGE.trim().length() != 0 ? "." + SUB_PACKAGE : "";
         config.entityPackage = BASE_PACKAGE + config.subPackage + ".entity";
         config.dtoPackage = BASE_PACKAGE + config.subPackage + ".dto";
@@ -71,7 +92,7 @@ public class CodeGenerator2 {
                 generate(config.actionPackage, "/src/main/java/", entity.className + "Controller.java", "controller.ftl", entity, false);
                 generate(config.servicePackage, "/src/main/java/", entity.className + "Service.java", "service.ftl", entity, false);
                 generate(config.daoPackage, "/src/main/java/", entity.className + "Mapper.java", "IMapperdao.ftl", entity, false);
-                generate("", "/src/main/resources/mybatis/" + SUB_PACKAGE + "/", entity.className + "Mapper.xml", "mapper.xml.ftl", entity, true);
+                generate("", "/src/main/resources/mapper/" + SUB_PACKAGE + "/", entity.className + "Mapper.xml", "mapper.xml.ftl", entity, true);
             }
         } catch (Throwable e) {
             e.printStackTrace();
@@ -108,7 +129,7 @@ public class CodeGenerator2 {
         }
 
         Configuration cfg = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
-        cfg.setClassForTemplateLoading(CodeGenerator2.class, "/mybatisstarterftl/");
+        cfg.setClassForTemplateLoading(CodeGenerator1.class, "/mybatisstarterftl/");
 
         Template hbmTemplate = cfg.getTemplate(templateName);
 

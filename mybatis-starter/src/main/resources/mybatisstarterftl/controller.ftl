@@ -43,12 +43,12 @@ public class ${entity.className}Controller {
     }
 
     @RequestMapping(value = "/query", name = "分页查询")
-    public Result query(int page, int limit, ${entity.className}Param params) {
-        return this.${entity.classInstanceName}Service.selectPage(page, limit, params);
+    public Result query(${entity.className}Param param) {
+        return this.${entity.classInstanceName}Service.selectPage(param);
     }
 
     @RequestMapping(value = "/select", name = "查询所有")
-    public List<${entity.className}Dto> select(${entity.className}Param params) {
+    public List<${entity.className}Dto> select(${entity.className}Param param) {
         return this.${entity.classInstanceName}Service.selectByMap(params);
     }
 
