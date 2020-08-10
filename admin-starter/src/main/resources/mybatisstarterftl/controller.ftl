@@ -11,16 +11,25 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 import com.tao.frameworks.admin.tools.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
 * @author ${entity.author} on ${entity.createTime}
 */
 @RestController
 @RequestMapping("/${entity.classInstanceName}")
+@Api(tags = "API接口")
 public class ${entity.className}Controller {
 
     @Resource
     private ${entity.className}Service ${entity.classInstanceName}Service;
+
+    @GetMapping(value = "/list", name = "列表")
+    @ApiOperation(value = "列表", notes = "列表")
+    public Result list(${entity.className}Param params) {
+        return this.${entity.classInstanceName}Service.selectPage(page, limit, params);
+    }
 
     @PostMapping(value = "/insert", name = "插入")
     public void insert(${entity.className} ${entity.classInstanceName}) {
@@ -47,9 +56,5 @@ public class ${entity.className}Controller {
         return this.${entity.classInstanceName}Service.selectPage(page, limit, params);
     }
 
-    @PostMapping(value = "/select", name = "查询所有")
-    public List<${entity.className}Dto> select(${entity.className}Param params) {
-        return this.${entity.classInstanceName}Service.selectByMap(params);
-    }
 
 }
