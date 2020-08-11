@@ -31,5 +31,6 @@ public class ${entity.className}Dto {
     */
     @ApiModelProperty("${prop.note}")
     private ${prop.simpleType} ${prop.propName};
+
 </#list>
 }
