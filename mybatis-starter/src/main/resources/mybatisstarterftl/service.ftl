@@ -90,7 +90,7 @@ public class ${entity.className}Service {
             return ${entity.classInstanceName}Dto;
         }).collect(Collectors.toList());
         Map<String, Object> map = new HashMap<>();
-        map.put("pages", ipage.getPages());
+        map.put("total", ipage.getTotal());
         map.put("datas", ${entity.classInstanceName}DtoList);
         Result result = new Result(0, "success", map);
         return result;
