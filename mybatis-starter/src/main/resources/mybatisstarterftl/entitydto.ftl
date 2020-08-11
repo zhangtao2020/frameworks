@@ -26,11 +26,11 @@ public class ${entity.className}Dto {
     @ApiModelProperty("id")
     private ${entity.idSimpleType} ${entity.idName};
 <#list entity.propList as prop>
+    
     /**
     * ${prop.note}
     */
     @ApiModelProperty("${prop.note}")
     private ${prop.simpleType} ${prop.propName};
-
 </#list>
 }
