@@ -16,6 +16,7 @@ import lombok.experimental.Accessors;
 <#if entity.hasDecimalType>
     import java.math.BigDecimal;
 </#if>
+import io.swagger.annotations.ApiModelProperty;
 
 /**
 * @author ${entity.author} on ${entity.createTime}
@@ -24,12 +25,12 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class ${entity.className} {
 
-/**
-* 主键
-*/
-@TableId(type = IdType.AUTO)
-private ${entity.idSimpleType} ${entity.idName};
-
+    /**
+    * id
+    */
+    @TableId(type = IdType.AUTO)
+    @ApiModelProperty("id")
+    private ${entity.idSimpleType} ${entity.idName};
 <#if entity.hasHibernateVersion>
     /**
     * 对象版本，乐观锁需要可使用
@@ -42,6 +43,7 @@ private ${entity.idSimpleType} ${entity.idName};
     /**
     * ${prop.note}
     */
+    @ApiModelProperty("${prop.note}")
     private ${prop.simpleType} ${prop.propName};
 
 </#list>

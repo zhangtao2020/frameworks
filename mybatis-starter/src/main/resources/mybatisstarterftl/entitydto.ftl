@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 <#if entity.hasDecimalType>
     import java.math.BigDecimal;
 </#if>
+import io.swagger.annotations.ApiModelProperty;
 
 /**
 * @author ${entity.author} on ${entity.createTime}
@@ -19,15 +20,16 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class ${entity.className}Dto {
 
-/**
-* 主键
-*/
-private ${entity.idSimpleType} ${entity.idName};
-
+    /**
+    * 主键
+    */
+    @ApiModelProperty("id")
+    private ${entity.idSimpleType} ${entity.idName};
 <#list entity.propList as prop>
     /**
     * ${prop.note}
     */
+    @ApiModelProperty("${prop.note}")
     private ${prop.simpleType} ${prop.propName};
 </#list>
 }

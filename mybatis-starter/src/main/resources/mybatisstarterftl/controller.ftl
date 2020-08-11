@@ -4,52 +4,52 @@ import ${entity.entityPackageName}.${entity.className};
 import ${entity.paramPackage}.${entity.className}Param;
 import ${entity.dtoPackageName}.${entity.className}Dto;
 import ${entity.servicePackageName}.${entity.className}Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.List;
 import com.tao.frameworks.base.common.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
 * @author ${entity.author} on ${entity.createTime}
 */
 @RestController
 @RequestMapping("/${entity.classInstanceName}")
+@Api(tags = "API接口")
 public class ${entity.className}Controller {
 
     @Resource
     private ${entity.className}Service ${entity.classInstanceName}Service;
 
-    @PostMapping(value = "/insert", name = "插入")
-    public void insert(${entity.className} ${entity.classInstanceName}) {
-        this.${entity.classInstanceName}Service.insert(${entity.classInstanceName});
+    @GetMapping("/list")
+    @ApiOperation(value = "列表", notes = "列表")
+    public Result list(${entity.className}Param param) {
+        return this.${entity.classInstanceName}Service.list(param);
     }
 
-    @GetMapping(value = "/delete", name = "删除")
-    public void delete(${entity.idSimpleType} ${entity.idName}) {
+    @PostMapping("/add")
+    @ApiOperation(value = "添加", notes = "添加")
+    public void add(@RequestBody ${entity.className} ${entity.classInstanceName}) {
+        this.${entity.classInstanceName}Service.add(${entity.classInstanceName});
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "删除", notes = "删除")
+    public void delete(@PathVariable ${entity.idSimpleType} ${entity.idName}) {
         this.${entity.classInstanceName}Service.deleteById(${entity.idName});
     }
 
-    @PostMapping(value = "/update", name = "修改")
-    public void update(${entity.className} ${entity.classInstanceName}) {
-        this.${entity.classInstanceName}Service.update(${entity.classInstanceName});
+    @PutMapping("/edit")
+    @ApiOperation(value = "修改", notes = "修改")
+    public void edit(${entity.className} ${entity.classInstanceName}) {
+        this.${entity.classInstanceName}Service.edit(${entity.classInstanceName});
     }
 
-    @GetMapping(value = "/get", name = "详情")
-    public ${entity.className}Dto get(${entity.idSimpleType} ${entity.idName}) {
+    @GetMapping("/{id}")
+    @ApiOperation(value = "详情", notes = "详情")
+    public ${entity.className}Dto get(@PathVariable ${entity.idSimpleType} ${entity.idName}) {
         return this.${entity.classInstanceName}Service.getById(${entity.idName});
     }
 
-    @RequestMapping(value = "/query", name = "分页查询")
-    public Result query(${entity.className}Param param) {
-        return this.${entity.classInstanceName}Service.selectPage(param);
-    }
-
-    @RequestMapping(value = "/select", name = "查询所有")
-    public List<${entity.className}Dto> select(${entity.className}Param param) {
-        return this.${entity.classInstanceName}Service.selectByMap(params);
-    }
 
 }

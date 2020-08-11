@@ -31,7 +31,7 @@ public class ${entity.className}Service {
      *
      * @param ${entity.classInstanceName} 实体对象
      */
-    public int insert(${entity.className} ${entity.classInstanceName}){
+    public int add(${entity.className} ${entity.classInstanceName}){
         return ${entity.classInstanceName}Mapper.insert(${entity.classInstanceName});
     }
 
@@ -49,7 +49,7 @@ public class ${entity.className}Service {
      *
      * @param ${entity.classInstanceName} 实体对象
      */
-    public int update(${entity.className} ${entity.classInstanceName}){
+    public int edit(${entity.className} ${entity.classInstanceName}){
         return ${entity.classInstanceName}Mapper.updateById(${entity.classInstanceName});
     }
 
@@ -70,31 +70,12 @@ public class ${entity.className}Service {
     }
 
     /**
-     * 条件查询所有
-     *
-     * @param param
-     * @return
-     */
-    public List<${entity.className}Dto> selectByMap(${entity.className}Param param) {
-        Map<String, Object> columnMap = MapUtils.beanToMap(param);
-        List<${entity.className}> ${entity.classInstanceName}List = ${entity.classInstanceName}Mapper.selectByMap(columnMap);
-        List<${entity.className}Dto> ${entity.classInstanceName}DtoList = ${entity.classInstanceName}List.stream().map(${entity.classInstanceName} -> {
-            ${entity.className}Dto ${entity.classInstanceName}Dto = new ${entity.className}Dto();
-            BeanUtils.copyProperties(${entity.classInstanceName}, ${entity.classInstanceName}Dto);
-            return ${entity.classInstanceName}Dto;
-        }).collect(Collectors.toList());
-        return ${entity.classInstanceName}DtoList;
-    }
-
-    /**
      * 条件查询并分页
      *
-     * @param page
-     * @param limit
      * @param param
      * @return
      */
-    public Result selectPage(${entity.className}Param param) {
+    public Result list(${entity.className}Param param) {
         QueryWrapper<${entity.className}> queryWrapper = new QueryWrapper<>();
         Map<String, Object> columnMap = MapUtils.beanToMap(param);
         if(columnMap!=null) {
