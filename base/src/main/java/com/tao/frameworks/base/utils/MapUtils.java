@@ -1,5 +1,7 @@
 package com.tao.frameworks.base.utils;
 
+import com.tao.frameworks.base.annotation.ParamIgnoreAnnotation;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -70,7 +72,8 @@ public class MapUtils {
                     field.setAccessible(true);
                     Object value = field.get(cls);
                     if (value != null && !value.equals("")
-                            && (!field.getName().equals("page") && !field.getName().equals("limit"))) {
+                            && (!field.getName().equals("page") && !field.getName().equals("limit"))
+                            && !ignore(field)) {
                         fieldMap.put(getName(field.getName()), value);
                     }
                 } catch (IllegalAccessException e) {
@@ -82,6 +85,14 @@ public class MapUtils {
             return null;
         }
         return fieldMap;
+    }
+
+    private static boolean ignore(Field f) {
+        ParamIgnoreAnnotation an = f.getAnnotation(ParamIgnoreAnnotation.class);
+        if(an!=null) {
+            return true;
+        }
+        return false;
     }
 
 }

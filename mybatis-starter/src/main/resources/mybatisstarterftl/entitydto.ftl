@@ -21,12 +21,12 @@ import io.swagger.annotations.ApiModelProperty;
 public class ${entity.className}Dto {
 
     /**
-    * 主键
+    * id
     */
     @ApiModelProperty("id")
     private ${entity.idSimpleType} ${entity.idName};
 <#list entity.propList as prop>
-    
+
     /**
     * ${prop.note}
     */
