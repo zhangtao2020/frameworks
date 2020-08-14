@@ -1,6 +1,8 @@
 package com.tao.frameworks.base.common;
 
 import com.tao.frameworks.base.exception.ErrorCode;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
@@ -9,34 +11,39 @@ import java.util.Date;
  *
  * @author tao
  */
-public class Result {
+@ApiModel("响应体")
+public class Result<T> {
 
 	/**
 	 * 状态码
 	 */
+	@ApiModelProperty("状态码")
 	private int code;
 
 	/**
 	 * 描述
 	 */
+	@ApiModelProperty("描述")
 	private String message;
 
 	/**
 	 * 时间
 	 */
+	@ApiModelProperty("响应时间")
 	private Long time;
 
 	/**
 	 * 数据
 	 */
-	private Object data;
+	@ApiModelProperty("业务数据")
+	private T data;
 
 
 	public Result(ErrorCode errorCode){
 		this(errorCode.getCode(), errorCode.getMessage(), null);
 	}
 
-	public Result(Integer code, String message, Object data) {
+	public Result(Integer code, String message, T data) {
 		if (code == null) {
 			code = -1;
 		}
@@ -57,7 +64,7 @@ public class Result {
 		this(null, null, null);
 	}
 
-	public Result(Object data){
+	public Result(T data){
 		this(0, "success", data);
 	}
 
@@ -81,7 +88,7 @@ public class Result {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(T data) {
 		this.data = data;
 	}
 
@@ -94,7 +101,7 @@ public class Result {
 		this.time = time;
 	}
 
-	public static Result buildSuccess(Object data) {
+	public Result buildSuccess(T data) {
 		Result result = new Result(0, "success", data);
 		return result;
 	}
