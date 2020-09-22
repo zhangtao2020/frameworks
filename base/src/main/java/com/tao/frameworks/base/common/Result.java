@@ -101,7 +101,7 @@ public class Result<T> {
 		this.time = time;
 	}
 
-	public Result buildSuccess(T data) {
+	public static Result buildSuccess(Object data) {
 		Result result = new Result(0, "success", data);
 		return result;
 	}
